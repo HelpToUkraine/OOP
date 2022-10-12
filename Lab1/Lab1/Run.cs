@@ -1,5 +1,6 @@
 namespace Lab1;
 
+
 public class Run
 {
     public static void Main(string[] args)
@@ -15,5 +16,7 @@ public class Run
         player1.GetStats();
         player2.GetStats();
         GameAccount.GetAccountsInfo();
+
+
     }
 }

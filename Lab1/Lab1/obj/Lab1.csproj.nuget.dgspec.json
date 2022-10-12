@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\OOP\\Lab1\\Lab1.csproj": {}
+    "D:\\Code\\OOP\\Lab1\\Lab1\\Lab1.csproj": {}
   },
   "projects": {
-    "D:\\Code\\OOP\\Lab1\\Lab1.csproj": {
+    "D:\\Code\\OOP\\Lab1\\Lab1\\Lab1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\OOP\\Lab1\\Lab1.csproj",
+        "projectUniqueName": "D:\\Code\\OOP\\Lab1\\Lab1\\Lab1.csproj",
         "projectName": "Lab1",
-        "projectPath": "D:\\Code\\OOP\\Lab1\\Lab1.csproj",
+        "projectPath": "D:\\Code\\OOP\\Lab1\\Lab1\\Lab1.csproj",
         "packagesPath": "C:\\Users\\ivanp\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\OOP\\Lab1\\obj\\",
+        "outputPath": "D:\\Code\\OOP\\Lab1\\Lab1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ivanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
