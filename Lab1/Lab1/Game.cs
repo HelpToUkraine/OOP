@@ -4,11 +4,10 @@ public class Game
 {
     private static int _id; /* var for increment value Game object's 'GameId'*/
 
-    private int _rating = 1; /* default value game rating */
-    private int _gameId ;
-    private GameAccount _player;
-    private GameAccount _opponent;
-    private GameStatus _isWinPlayer;
+    private  readonly int _rating = 1; /* default value game rating */
+    private readonly int _gameId;
+    private readonly GameAccount _player;
+    private readonly GameAccount _opponent;
 
     public Game(GameAccount player, GameAccount opponent)
     {
@@ -22,7 +21,7 @@ public class Game
     {
         if (rating < 0)
         {
-            throw new ArgumentException("Error: '_rating can't have negative value'");
+            throw new ArgumentException("Error: 'rating can't have negative value'");
         }
         else if (rating > player.CurrentRating || rating > opponent.CurrentRating)
         {
@@ -42,31 +41,23 @@ public class Game
         if (random.Next(2) < 1)
         {
             _player.WinGame(_opponent.UserName, _rating);
-            _opponent.LoseGame(_player.UserName, _rating);
-            _isWinPlayer = GameStatus.Win;
+            _player.HistoryGames.Add(new HistoryGame(_gameId, _opponent.UserName, GameStatus.Win, _rating));
+
+            _opponent.LoseGame(_rating);
+            _opponent.HistoryGames.Add(new HistoryGame(_gameId, _player.UserName, GameStatus.Lose, _rating));
         }
         else
         {
             _opponent.WinGame(_player.UserName, _rating);
-            _player.LoseGame(_opponent.UserName, _rating);
-            _isWinPlayer = GameStatus.Lose;
+            _opponent.HistoryGames.Add(new HistoryGame(_gameId, _player.UserName, GameStatus.Win, _rating));
+
+            _player.LoseGame(_rating);
+            _player.HistoryGames.Add(new HistoryGame(_gameId, _opponent.UserName, GameStatus.Lose, _rating));
         }
 
         _player.GamesCount++;
         _opponent.GamesCount++;
 
-        _player.HistoryGames.Add(this);
-        _opponent.HistoryGames.Add(this);
-    }
-
-    public override string ToString()
-    {
-        return "Game{"
-            + '\'' + _player.UserName + "' vs '" + _opponent.UserName + '\''
-            + ", isWinPlayer=" + _isWinPlayer
-            + ", gameRating=" + _rating
-            + ", gameId=" + _gameId
-            + '}';
     }
 
     public static void CreateGames(GameAccount player1, GameAccount player2, int countGames)
