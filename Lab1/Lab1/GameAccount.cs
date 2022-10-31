@@ -3,44 +3,45 @@ namespace Lab1;
 public class GameAccount
 {
     private const int InitRating = 10;
-    private static readonly List<GameAccount> Accounts = new List<GameAccount>();
+    private static readonly List<GameAccount> Accounts = new();
 
-    public string UserName { get; }
+    private readonly string _userName;
+    private readonly List<HistoryGame> _historyGames;
     public int CurrentRating = InitRating;
-    public int GamesCount;
-
-    public readonly List<HistoryGame> HistoryGames;
-
 
     public GameAccount(string userName)
     {
-        UserName = userName;
-        HistoryGames = new List<HistoryGame>();
+        _userName = userName;
+        _historyGames = new List<HistoryGame>();
         Accounts.Add(this);
     }
 
-
-    public void WinGame(string opponentName, int rating)
+    public void WinGame(Game game)
     {
+        var opponentName = GetOpponentName(game);
+        var rating = game.Rating;
+
         CurrentRating += rating;
-        Console.WriteLine($"{UserName} win {opponentName} ---> earned: +{rating} points");
+        _historyGames.Add(new HistoryGame(game.GameId, opponentName, GameStatus.Win, rating));
+        Console.WriteLine($"{_userName} win {opponentName} ---> earned: +{rating} points");
     }
 
-
-    public void LoseGame(int rating)
+    public void LoseGame(Game game)
     {
+        var opponentName = GetOpponentName(game);
+        var rating = game.Rating;
         if (CurrentRating - rating < 1)
             CurrentRating = 1;
         else
             CurrentRating -= rating;
+        _historyGames.Add(new HistoryGame(game.GameId, opponentName, GameStatus.Lose, rating));
     }
 
     public void GetStats()
     {
-        Console.WriteLine($"\nHistory games for '{UserName}':");
-        foreach (var game in HistoryGames)
+        Console.WriteLine($"\nHistory games for '{_userName}':");
+        foreach (var game in _historyGames)
         {
-
             Console.WriteLine(game);
         }
     }
@@ -48,15 +49,19 @@ public class GameAccount
     public override string ToString()
     {
         return "GameAccount{"
-               + "userName='"+ UserName + '\''
+               + "userName='" + _userName + '\''
                + ", currentRating=" + CurrentRating
-               + ", gamesCount=" + GamesCount
+               + ", gamesCount=" + _historyGames.Count
                + '}';
+    }
+
+    private string GetOpponentName(Game game)
+    {
+        return Equals(game.Player) ? game.Opponent._userName : game.Player._userName;
     }
 
     public static void GetAccountsInfo()
     {
-
         Console.WriteLine("\nStatistics players:");
         foreach (var account in Accounts)
         {
@@ -64,4 +69,3 @@ public class GameAccount
         }
     }
 }
-

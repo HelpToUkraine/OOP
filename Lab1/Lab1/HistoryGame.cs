@@ -17,6 +17,6 @@ public class HistoryGame
 
     public override string ToString()
     {
-        return $"VS opponent='{_opponent}', gameRating={_rating}, gameId={_id}, isWin={_gameStatus}";
+        return $"VS opponent='{_opponent}', gameRating={_rating}, gameId={_id}, Result={_gameStatus}";
     }
 }
