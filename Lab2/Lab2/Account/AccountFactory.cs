@@ -2,9 +2,9 @@ namespace Lab2.Account;
 
 public static class AccountFactory
 {
-    public static GameAccount CreateAccount(string userName)
+    public static GameAccount CreateDefaultAccount(string userName)
     {
-        return new Account(userName);
+        return new DefaultAccount(userName);
     }
 
     public static GameAccount CreateVipAccount(string userName)
@@ -16,6 +16,4 @@ public static class AccountFactory
     {
         return new PremiumAccount(userName);
     }
-
-
 }

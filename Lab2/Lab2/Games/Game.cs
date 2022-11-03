@@ -6,108 +6,86 @@ public abstract class Game
 {
     private static int _id; /* var for increment value Game object's 'GameId'*/
 
-    private readonly int _rating = 1; /* default value game rating */
-    private readonly int _gameId;
-    private readonly GameAccount _player;
-    private readonly GameAccount _opponent = null!;
+    private protected int _rating = 2; /* default value game rating */
+    public readonly int GameId;
+    public readonly GameAccount Player;
+    public readonly GameAccount Opponent = null!;
 
-    public int Rating => _rating;
+    protected virtual int Rating
+    {
+        get => _rating;
+        private protected init
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("Error: 'rating can't have negative value'");
+            }
+
+            if (value > Player.CurrentRating || value > Opponent.CurrentRating)
+            {
+                throw new ArgumentException("Error: 'Game rating  can't be more players rating'");
+            }
+
+            _rating = value;
+        }
+    }
 
     protected Game(GameAccount player)
     {
-        _player = player;
-        _gameId = _id++;
-        PlaySingle();
+        Player = player;
+        GameId = _id++;
+        Play();
     }
 
     protected Game(GameAccount player, int rating)
     {
-        _player = player;
-        _rating = rating;
-        _gameId = _id++;
-        PlaySingle();
+        Player = player;
+        Rating = rating;
+        GameId = _id++;
+        Play();
     }
 
     protected Game(GameAccount player, GameAccount opponent)
     {
-        _player = player;
-        _opponent = opponent;
-        _gameId = _id++;
+        Player = player;
+        Opponent = opponent;
+        GameId = _id++;
         Play();
     }
 
     protected Game(GameAccount player, GameAccount opponent, int rating)
     {
-        if (rating < 0)
-        {
-            throw new ArgumentException("Error: 'rating can't have negative value'");
-        }
-        if (rating > player.CurrentRating || rating > opponent.CurrentRating)
-        {
-            throw new ArgumentException("Error: 'Game rating  can't be more players rating'");
-        }
-        _player = player;
-        _opponent = opponent;
-        _rating = rating;
-        _gameId = _id++;
+        Player = player;
+        Opponent = opponent;
+        Rating = rating;
+        GameId = _id++;
         Play();
     }
 
-    private void PlaySingle()
-    {
-        // TODO: "delete output"
-        Console.Write($"GameId {_gameId}: ");
 
-        var random = new Random();
-        if (random.Next(2) < 1)
+    protected virtual void Play()
+    {
+        if (IsWinPlayer())
         {
-            _player.WinGame(this); /*"SYSTEM",*/
-            _player.HistoryGames.Add(new HistoryGame(_gameId, GameStatus.Win, _rating));  // DELETE OPPONENT
+            Player.WinGame(this);
+            Opponent.LoseGame(this);
         }
         else
         {
-            _player.LoseGame(this);
-            _player.HistoryGames.Add(new HistoryGame(_gameId, GameStatus.Lose, _rating));
+            Opponent.WinGame(this);
+            Player.LoseGame(this);
         }
-
-        _player.GamesCount++;
     }
 
-    private void Play()
+    private protected static bool IsWinPlayer()
     {
-        // TODO: "delete output"
-        Console.Write($"GameId {_gameId}: ");
-
-        var random = new Random();
-        if (random.Next(2) < 1)
-        {
-            _player.WinGame(this);  /*_opponent.UserName, */
-            _player.HistoryGames.Add(new HistoryGame(_gameId, _opponent.UserName, GameStatus.Win, _rating));
-
-            _opponent.LoseGame(this);
-            _opponent.HistoryGames.Add(new HistoryGame(_gameId, _player.UserName, GameStatus.Lose, _rating));
-        }
-        else
-        {
-            _opponent.WinGame(this); /*_player.UserName, */
-            _opponent.HistoryGames.Add(new HistoryGame(_gameId, _player.UserName, GameStatus.Win, _rating));
-
-            _player.LoseGame(this);
-            _player.HistoryGames.Add(new HistoryGame(_gameId, _opponent.UserName, GameStatus.Lose, _rating));
-        }
-
-        _player.GamesCount++;
-        _opponent.GamesCount++;
-
+        return new Random().Next(2) < 1;
     }
 
-    /*public static void CreateGames(GameAccount player1, GameAccount player2, int countGames)
+    public static string GetObjectType(object o) /* example: Game.Games.SingleGame ---> SingleGame */
     {
-        for (var i = 0; i < countGames; i++)
-        {
-            new Game(player1, player2);
-        }
-    }*/
+        return o.GetType().ToString().Split('.')[2];
+    }
 
-    /*public abstract int GetRating();*/
+    public abstract int GetRating { get; }
 }

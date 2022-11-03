@@ -2,30 +2,29 @@ namespace Lab2.Games;
 
 public class HistoryGame
 {
+    private readonly string _gameType;
     private readonly int _id;
-    private readonly string _opponent = "";
+    private readonly string _opponent;
     private readonly GameStatus _gameStatus;
     private readonly int _rating;
+    private readonly int _currentRating;
+    private readonly int _winStreakCount;
 
-    public HistoryGame(int id, string opponent, GameStatus gameStatus, int rating)
+    public HistoryGame(string gameType, int id, string opponent, GameStatus gameStatus, int rating, int currentRating,
+        int winStreakCount)
     {
+        _gameType = gameType;
         _id = id;
         _opponent = opponent;
         _gameStatus = gameStatus;
         _rating = rating;
-    }
-
-    public HistoryGame(int id, GameStatus gameStatus, int rating)
-    {
-        _id = id;
-        _gameStatus = gameStatus;
-        _rating = rating;
+        _currentRating = currentRating;
+        _winStreakCount = winStreakCount;
     }
 
     public override string ToString()
     {
-        return !_opponent.Equals("")
-            ? $"VS opponent='{_opponent}', gameRating={_rating}, gameId={_id}, isWin={_gameStatus}"
-            : $"VS opponent='SYSTEM', gameRating={_rating}, gameId={_id}, isWin={_gameStatus}";
+        return $"{_gameType}\tVS\topponent='{_opponent}', gameId={_id}, gameRating={_rating}, " +
+               $"result={_gameStatus}, rating={_currentRating}, winStreak={_winStreakCount}";
     }
 }

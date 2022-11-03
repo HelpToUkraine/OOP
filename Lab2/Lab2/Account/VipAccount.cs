@@ -5,12 +5,10 @@ public class VipAccount : GameAccount
     public VipAccount(string name)
         : base(name)
     {
-
     }
 
-    public override int GetBonus(int rating)
+    protected override int GetBonus(int rating)
     {
-        return WinStreakCount >= 2 ? rating + 2 : rating;
+        return WinStreakCount >= 2 && rating != 0 ? rating + 2 : rating;
     }
-
 }
