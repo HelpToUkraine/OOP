@@ -1,0 +1,30 @@
+D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.exe
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.exe
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.deps.json
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.runtimeconfig.json
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.dll
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.pdb
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.csproj.AssemblyReference.cache
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.AssemblyInfoInputs.cache
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.AssemblyInfo.cs
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.dll
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\refint\TicTacToe.dll
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.pdb
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.genruntimeconfig.cache
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\ref\TicTacToe.dll
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.csproj.AssemblyReference.cache
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.AssemblyInfoInputs.cache
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.AssemblyInfo.cs
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.csproj.CoreCompileInputs.cache
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.dll
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\refint\TicTacToe.dll
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.pdb
+D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.deps.json
+D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.runtimeconfig.json
+D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.dll
+D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.pdb
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.genruntimeconfig.cache
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\ref\TicTacToe.dll
