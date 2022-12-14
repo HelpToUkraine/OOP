@@ -16,7 +16,7 @@ namespace TicTacToe.Services
             return DbContext.Users;
         }
 
-        public static List<string> GetNames()
+        public static IEnumerable<string> GetNames()
         {
             return DbContext.Users.Select(x => x.UserName).ToList();
 

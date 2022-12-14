@@ -21,6 +21,10 @@ public class SingleGame : Game
             case GameStatus.Win: Player.WinGame(this); break;
             case GameStatus.Lose: Player.LoseGame(this); break;
             case GameStatus.Draw: Player.DrawGame(this); break;
+            case GameStatus.Playing:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

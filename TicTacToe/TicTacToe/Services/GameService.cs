@@ -25,7 +25,7 @@ public static class GameService
         return DbContext.Histories;
     }
 
-    public static List<int> GetIDs()
+    public static IEnumerable<int> GetIDs()
     {
         return DbContext.Histories.Select(x => x.GameId).ToList();
     }

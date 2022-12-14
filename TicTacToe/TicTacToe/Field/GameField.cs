@@ -46,7 +46,7 @@ public class GameField
             SetStep(GetIndexInMatrix(index),
                 NumberSteps % 2 == 0
                     ? GameSide.X
-                    : GameSide.O); //firstStep.Equals(GameSide.X) ? GameSide.O : GameSide.X
+                    : GameSide.O);
             PrintField();
 
             NumberSteps++;
@@ -58,7 +58,6 @@ public class GameField
                           {
                               GameStatus.Draw => GameStatus.Draw,
                               GameStatus.Win => $"{(char)GameSide.X}  {_game.Player.UserName} {GameStatus.Win}",
-                              //GameStatus.Lose => $"{(char)GameSide.X}  {_game.Player.UserName} {GameStatus.Lose}"
                               _ => $"{(char)GameSide.O}  " +
                                    $"{(_game.Type != GameType.SingleGame ? _game.Opponent.UserName : "Bot")} " +
                                    $"{GameStatus.Win}"

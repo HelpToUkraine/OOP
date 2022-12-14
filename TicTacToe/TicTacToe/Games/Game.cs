@@ -93,6 +93,10 @@ public abstract class Game
                 Player.DrawGame(this);
                 Opponent.DrawGame(this);
                 break;
+            case GameStatus.Playing:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
