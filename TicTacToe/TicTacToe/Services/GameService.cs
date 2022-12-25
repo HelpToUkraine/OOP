@@ -10,16 +10,6 @@ public static class GameService
         DbContext.Histories.Add(game);
     }
 
-    public static void AddToQueue(Game game)
-    {
-        DbContext.GameQueue.Enqueue(game);
-    }
-
-    public static Queue<Game> GetQueue()
-    {
-        return DbContext.GameQueue;
-    }
-
     public static List<Game> Get()
     {
         return DbContext.Histories;

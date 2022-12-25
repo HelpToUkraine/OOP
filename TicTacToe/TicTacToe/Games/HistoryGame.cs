@@ -1,32 +1,34 @@
 using TicTacToe.Enum;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace TicTacToe.Games;
 
 public class HistoryGame
 {
-    private readonly GameType _gameType;
-    private readonly int _id;
-    private readonly string _opponent;
-    private readonly GameStatus _gameStatus;
-    private readonly int _rating;
-    private readonly int _currentRating;
-    private readonly int _winStreakCount;
+
+    public readonly GameType GameType;
+    public readonly int Id;
+    public readonly string Opponent;
+    public readonly GameStatus GameStatus;
+    public readonly int Rating;
+    public readonly int CurrentRating;
+    public readonly int WinStreakCount;
 
     public HistoryGame(GameType gameType, int id, string opponent, GameStatus gameStatus, int rating, int currentRating,
         int winStreakCount)
     {
-        _gameType = gameType;
-        _id = id;
-        _opponent = opponent;
-        _gameStatus = gameStatus;
-        _rating = rating;
-        _currentRating = currentRating;
-        _winStreakCount = winStreakCount;
+        GameType = gameType;
+        Id = id;
+        Opponent = opponent;
+        GameStatus = gameStatus;
+        Rating = rating;
+        CurrentRating = currentRating;
+        WinStreakCount = winStreakCount;
     }
 
     public override string ToString()
     {
-        return $"{_gameType}:\topponent='{_opponent}', gameId={_id}, gameRating={_rating}, " +
-               $"result={_gameStatus}, rating={_currentRating}, winStreak={_winStreakCount}";
+        return $"{GameType}:\topponent='{Opponent}', gameId={Id}, gameRating={Rating}, " +
+               $"result={GameStatus}, rating={CurrentRating}, winStreak={WinStreakCount}";
     }
 }

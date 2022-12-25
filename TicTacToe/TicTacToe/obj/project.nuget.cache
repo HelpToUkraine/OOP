@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "ZcxS/97cHjo6wfhu7U650M1H0XMtFzIA9BokhfBhawS8NkgEBczCp/OAaOH0KXBnp75mZuwIHiNyHqATJes99w==",
+  "dgSpecHash": "zDoh8Fa/p7juJ1MYkvmpEPCdXTiyiFO977LFo0JIPzG9GiR3MuYvAG3RvFFVxEp/n29DkeOtNOZ0eKQVMlnVTA==",
   "success": true,
   "projectFilePath": "D:\\Code\\OOP\\TicTacToe\\TicTacToe\\TicTacToe.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ivanp\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\ivanp\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\ivanp\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\ivanp\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\ivanp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.12\\microsoft.netcore.app.host.win-x64.6.0.12.nupkg.sha512"
+  ],
   "logs": []
 }

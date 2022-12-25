@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using TicTacToe.Account;
 using TicTacToe.Enum;
 
@@ -5,6 +6,7 @@ namespace TicTacToe.Games;
 
 public class SingleGame : Game
 {
+    [JsonConstructor]
     public SingleGame(GameAccount player) : base(player, GameType.SingleGame)
     {
     }

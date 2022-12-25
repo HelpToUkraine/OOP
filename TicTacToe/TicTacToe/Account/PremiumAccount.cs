@@ -1,4 +1,6 @@
+using Newtonsoft.Json;
 using TicTacToe.Enum;
+using TicTacToe.Games;
 
 namespace TicTacToe.Account;
 
@@ -8,8 +10,13 @@ public class PremiumAccount : GameAccount
     {
     }
 
+    [JsonConstructor]
+    public PremiumAccount(string userName, List<HistoryGame> historyGames) : base(userName, AccountType.Premium, historyGames)
+    {
+    }
+
     protected override int GetBonus(int rating)
     {
-        return WinStreakCount == 0 ? rating / 2 : rating * 2; /*if loose rating/2; else rating*2 */
+        return GetWinStreakCount() == 0 ? rating : rating * 2; /*if loose rating; else rating*2 */
     }
 }

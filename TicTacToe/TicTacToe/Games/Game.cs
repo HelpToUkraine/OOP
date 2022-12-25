@@ -1,20 +1,26 @@
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using TicTacToe.Account;
 using TicTacToe.Enum;
 using TicTacToe.Field;
 using TicTacToe.Services;
+// ReSharper disable InconsistentNaming
 
 namespace TicTacToe.Games;
 
+[JsonObject, DataContract]
 public abstract class Game
 {
-    private static int _id; /* var for increment value Game object's 'GameId'*/
-    private protected int _rating = 2; /* default value game rating */
+    /* var for increment value Game object's 'GameId'*/
+    private const int InitRating = 2;
+    private protected int _rating = InitRating;
 
     public readonly int GameId;
     public readonly GameType Type;
     public readonly GameAccount Player;
     public readonly GameAccount Opponent = null!;
 
+    [DataMember]
     protected virtual int Rating
     {
         get => _rating;
@@ -38,9 +44,8 @@ public abstract class Game
     {
         Player = player;
         Type = type;
-        GameId = _id++;
+        GameId = GameService.Get().Count > 0 ? GameService.Get().Last().GameId+1: 1;
         GameService.Add(this);
-        GameService.AddToQueue(this);
     }
 
     protected Game(GameAccount player, int rating, GameType type)
@@ -48,9 +53,8 @@ public abstract class Game
         Player = player;
         Rating = rating;
         Type = type;
-        GameId = _id++;
+        GameId = GameService.Get().Count > 0 ? GameService.Get().Last().GameId+1: 1;
         GameService.Add(this);
-        GameService.AddToQueue(this);
     }
 
     protected Game(GameAccount player, GameAccount opponent, GameType type)
@@ -59,9 +63,8 @@ public abstract class Game
         Player = player;
         Opponent = opponent;
         Type = type;
-        GameId = _id++;
+        GameId = GameService.Get().Count > 0 ? GameService.Get().Last().GameId+1: 1;
         GameService.Add(this);
-        GameService.AddToQueue(this);
     }
 
     protected Game(GameAccount player, GameAccount opponent, int rating, GameType type)
@@ -71,9 +74,8 @@ public abstract class Game
         Opponent = opponent;
         Rating = rating;
         Type = type;
-        GameId = _id++;
+        GameId = GameService.Get().Count > 0 ? GameService.Get().Last().GameId+1: 1;
         GameService.Add(this);
-        GameService.AddToQueue(this);
     }
 
     public virtual void Play()
@@ -115,7 +117,6 @@ public abstract class Game
 
     }
 
-
-
+    [JsonIgnore]
     public abstract int GetRating { get; }
 }

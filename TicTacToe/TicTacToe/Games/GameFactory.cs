@@ -14,7 +14,7 @@ public static class GameFactory
         return new StandartGame(player, opponent, rating);
     }
 
-    public static Game CreateTrainGame(GameAccount player, GameAccount opponent)
+    public static Game CreateTrainingGame(GameAccount player, GameAccount opponent)
     {
         return new TrainingGame(player, opponent);
     }

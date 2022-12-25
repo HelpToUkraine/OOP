@@ -1,19 +1,21 @@
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using TicTacToe.Enum;
 using TicTacToe.Games;
 using TicTacToe.Services;
 
 namespace TicTacToe.Account;
 
+[JsonObject, DataContract]
 public abstract class GameAccount
 {
     private const int InitRating = 20;
 
-    public readonly string UserName;
-    private readonly AccountType _type;
-    private int _currentRating = InitRating;
-    private readonly List<HistoryGame> _historyGames;
-    protected int WinStreakCount;
+    [DataMember] private int _currentRating = InitRating;
 
+    public readonly string UserName;
+    public readonly AccountType Type;
+    public readonly List<HistoryGame> HistoryGames;
 
     public int CurrentRating
     {
@@ -26,53 +28,66 @@ public abstract class GameAccount
             }
             else
             {
-                _currentRating -= value;
+                _currentRating += value;
             }
         }
     }
 
     protected GameAccount(string userName, AccountType type)
     {
+        if (UserService.IsUserExist(userName))
+            throw new ArgumentException("An account with same name already exists");
         UserName = userName;
-        _type = type;
-        _historyGames = new List<HistoryGame>();
+        Type = type;
+        HistoryGames = new List<HistoryGame>();
         UserService.Add(this);
+    }
+
+
+    // constructor for serialize | deserialize
+    protected GameAccount(string userName, AccountType type, List<HistoryGame> historyGames)
+    {
+        UserName = userName;
+        Type = type;
+        HistoryGames = historyGames;
     }
 
     public void WinGame(Game game)
     {
-        if (game.GetType() != typeof(TrainingGame))
-            WinStreakCount++;
         var rating = GetBonus(game.GetRating);
-
-        _currentRating += rating;
-        _historyGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
-            GameStatus.Win, rating, _currentRating, WinStreakCount));
+        CurrentRating = rating;
+        HistoryGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game), GameStatus.Win, rating,
+            _currentRating, game.Type != GameType.TrainingGame
+                ? GetWinStreakCount() + 1
+                : GetWinStreakCount()));
     }
 
     public void LoseGame(Game game)
     {
-        if (game.GetType() != typeof(TrainingGame))
-            WinStreakCount = 0;
         var rating = GetBonus(game.GetRating);
 
-        CurrentRating = rating;
-        _historyGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
-            GameStatus.Lose, rating, _currentRating, WinStreakCount));
+        CurrentRating = -rating;
+        HistoryGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
+            GameStatus.Lose, rating, _currentRating, 0));
     }
 
     public void DrawGame(Game game)
     {
-        _historyGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
-            GameStatus.Draw, game.GetRating, _currentRating, WinStreakCount));
+        HistoryGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
+            GameStatus.Draw, game.GetRating, _currentRating, GetWinStreakCount()));
     }
 
     public static void GetGamesInfo()
     {
+        if (UserService.Get().Count == 0)
+        {
+            Console.WriteLine("\nNo games yet");
+            return;
+        }
         foreach (var account in UserService.Get())
         {
             Console.WriteLine($"\nHistory games for '{account.UserName}':");
-            foreach (var game in account._historyGames)
+            foreach (var game in account.HistoryGames)
             {
                 Console.WriteLine(game);
             }
@@ -83,19 +98,32 @@ public abstract class GameAccount
     {
         return '{'
                + "userName='" + UserName + '\''
-               + ",\ttype='" + _type + '\''
+               + ",\ttype='" + Type + '\''
                + ",\tcurrentRating=" + _currentRating
-               + ", gamesCount=" + _historyGames.Count
+               + ", gamesCount=" + HistoryGames.Count
                + '}';
     }
 
     public static void GetAccountsInfo()
     {
         Console.WriteLine("\nStatistics players:");
-        foreach (var account in UserService.Get())
+        UserService.Get().ForEach(Console.WriteLine);
+    }
+
+    protected int GetWinStreakCount()
+    {
+        var winStreakCount = 0;
+        for (var i = HistoryGames.Count - 1; i >= 0; i--)
         {
-            Console.WriteLine(account);
+            if (HistoryGames[i].GameType == GameType.TrainingGame)
+                continue;
+            if (HistoryGames[i].GameStatus == GameStatus.Win)
+                winStreakCount++;
+            else
+                break;
         }
+
+        return winStreakCount;
     }
 
     private string GetOpponentName(Game game)

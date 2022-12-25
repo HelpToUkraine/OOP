@@ -1,0 +1,146 @@
+[
+  {
+    "$type": "TicTacToe.Games.StandartGame, TicTacToe",
+    "GameId": 1,
+    "Type": 2,
+    "Player": {
+      "$type": "TicTacToe.Account.PremiumAccount, TicTacToe",
+      "UserName": "Scam",
+      "Type": 1,
+      "HistoryGames": [
+        {
+          "GameType": 2,
+          "Id": 1,
+          "Opponent": "Kirgo",
+          "GameStatus": 0,
+          "Rating": 5,
+          "CurrentRating": 25,
+          "WinStreakCount": 1
+        },
+        {
+          "GameType": 2,
+          "Id": 2,
+          "Opponent": "Kirgo",
+          "GameStatus": 0,
+          "Rating": 10,
+          "CurrentRating": 35,
+          "WinStreakCount": 2
+        }
+      ],
+      "_currentRating": 35,
+      "CurrentRating": 35
+    },
+    "Opponent": {
+      "$type": "TicTacToe.Account.VipAccount, TicTacToe",
+      "UserName": "Kirgo",
+      "Type": 2,
+      "HistoryGames": [
+        {
+          "GameType": 2,
+          "Id": 1,
+          "Opponent": "Scam",
+          "GameStatus": 1,
+          "Rating": 5,
+          "CurrentRating": 15,
+          "WinStreakCount": 0
+        },
+        {
+          "GameType": 2,
+          "Id": 2,
+          "Opponent": "Scam",
+          "GameStatus": 1,
+          "Rating": 5,
+          "CurrentRating": 10,
+          "WinStreakCount": 0
+        }
+      ],
+      "_currentRating": 10,
+      "CurrentRating": 10
+    },
+    "Rating": 5
+  },
+  {
+    "$type": "TicTacToe.Games.StandartGame, TicTacToe",
+    "GameId": 2,
+    "Type": 2,
+    "Player": {
+      "$type": "TicTacToe.Account.PremiumAccount, TicTacToe",
+      "UserName": "Scam",
+      "Type": 1,
+      "HistoryGames": [
+        {
+          "GameType": 2,
+          "Id": 1,
+          "Opponent": "Kirgo",
+          "GameStatus": 0,
+          "Rating": 5,
+          "CurrentRating": 25,
+          "WinStreakCount": 1
+        },
+        {
+          "GameType": 2,
+          "Id": 2,
+          "Opponent": "Kirgo",
+          "GameStatus": 0,
+          "Rating": 10,
+          "CurrentRating": 35,
+          "WinStreakCount": 2
+        }
+      ],
+      "_currentRating": 35,
+      "CurrentRating": 35
+    },
+    "Opponent": {
+      "$type": "TicTacToe.Account.VipAccount, TicTacToe",
+      "UserName": "Kirgo",
+      "Type": 2,
+      "HistoryGames": [
+        {
+          "GameType": 2,
+          "Id": 1,
+          "Opponent": "Scam",
+          "GameStatus": 1,
+          "Rating": 5,
+          "CurrentRating": 15,
+          "WinStreakCount": 0
+        },
+        {
+          "GameType": 2,
+          "Id": 2,
+          "Opponent": "Scam",
+          "GameStatus": 1,
+          "Rating": 5,
+          "CurrentRating": 10,
+          "WinStreakCount": 0
+        }
+      ],
+      "_currentRating": 10,
+      "CurrentRating": 10
+    },
+    "Rating": 5
+  },
+  {
+    "$type": "TicTacToe.Games.SingleGame, TicTacToe",
+    "GameId": 3,
+    "Type": 0,
+    "Player": {
+      "$type": "TicTacToe.Account.DefaultAccount, TicTacToe",
+      "UserName": "Chokopie",
+      "Type": 0,
+      "HistoryGames": [
+        {
+          "GameType": 0,
+          "Id": 3,
+          "Opponent": "BOT",
+          "GameStatus": 0,
+          "Rating": 7,
+          "CurrentRating": 27,
+          "WinStreakCount": 1
+        }
+      ],
+      "_currentRating": 27,
+      "CurrentRating": 27
+    },
+    "Opponent": null
+  }
+]

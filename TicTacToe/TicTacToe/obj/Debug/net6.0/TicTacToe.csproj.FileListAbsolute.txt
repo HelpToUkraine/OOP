@@ -28,3 +28,7 @@ D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.dll
 D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\TicTacToe.pdb
 D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.genruntimeconfig.cache
 D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\ref\TicTacToe.dll
+D:\Code\OOP\TicTacToe\TicTacToe\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Code\OOP\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.csproj.CopyComplete
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Max Vlasenko\Desktop\TicTacToe\TicTacToe\obj\Debug\net6.0\TicTacToe.csproj.CopyComplete
