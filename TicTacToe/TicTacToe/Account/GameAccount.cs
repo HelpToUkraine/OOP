@@ -22,7 +22,7 @@ public abstract class GameAccount
         get => _currentRating;
         private set
         {
-            if (_currentRating - value < 1)
+            if (_currentRating + value < 1)
             {
                 _currentRating = 1;
             }
@@ -57,9 +57,7 @@ public abstract class GameAccount
         var rating = GetBonus(game.GetRating);
         CurrentRating = rating;
         HistoryGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game), GameStatus.Win, rating,
-            _currentRating, game.Type != GameType.TrainingGame
-                ? GetWinStreakCount() + 1
-                : GetWinStreakCount()));
+            _currentRating));
     }
 
     public void LoseGame(Game game)
@@ -68,13 +66,13 @@ public abstract class GameAccount
 
         CurrentRating = -rating;
         HistoryGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
-            GameStatus.Lose, rating, _currentRating, 0));
+            GameStatus.Lose, rating, _currentRating));
     }
 
     public void DrawGame(Game game)
     {
         HistoryGames.Add(new HistoryGame(game.Type, game.GameId, GetOpponentName(game),
-            GameStatus.Draw, game.GetRating, _currentRating, GetWinStreakCount()));
+            GameStatus.Draw, game.GetRating, _currentRating));
     }
 
     public static void GetGamesInfo()
@@ -84,29 +82,30 @@ public abstract class GameAccount
             Console.WriteLine("\nNo games yet");
             return;
         }
+
+        Console.WriteLine($"\nHistory games for:");
+        Console.WriteLine("{0, -10} {1, -10} {2, 15} {3, 10} {4, 15} {5, 10} {6, 10}", "Name", "Type", "Opponent",
+            "GameId", "GameRating", "Result", "Rating");
         foreach (var account in UserService.Get())
         {
-            Console.WriteLine($"\nHistory games for '{account.UserName}':");
             foreach (var game in account.HistoryGames)
             {
-                Console.WriteLine(game);
+                Console.WriteLine("{0, -10} {1}", account.UserName, game);
             }
+
+            Console.WriteLine();
         }
     }
 
     public override string ToString()
     {
-        return '{'
-               + "userName='" + UserName + '\''
-               + ",\ttype='" + Type + '\''
-               + ",\tcurrentRating=" + _currentRating
-               + ", gamesCount=" + HistoryGames.Count
-               + '}';
+        return $"{UserName,-10} {Type,10} {_currentRating,10} {HistoryGames.Count,10}";
     }
 
     public static void GetAccountsInfo()
     {
         Console.WriteLine("\nStatistics players:");
+        Console.WriteLine("{0, -10} {1, 10} {2, 10} {3, 10}", "Name", "Type", "Rating", "Games");
         UserService.Get().ForEach(Console.WriteLine);
     }
 
@@ -115,7 +114,7 @@ public abstract class GameAccount
         var winStreakCount = 0;
         for (var i = HistoryGames.Count - 1; i >= 0; i--)
         {
-            if (HistoryGames[i].GameType == GameType.TrainingGame)
+            if (HistoryGames[i].GameType == GameType.Training)
                 continue;
             if (HistoryGames[i].GameStatus == GameStatus.Win)
                 winStreakCount++;
@@ -128,7 +127,7 @@ public abstract class GameAccount
 
     private string GetOpponentName(Game game)
     {
-        if (game.Type == GameType.SingleGame) return "BOT";
+        if (game.Type == GameType.Single) return "BOT";
         return Equals(game.Player) ? game.Opponent.UserName : game.Player.UserName;
     }
 

@@ -12,10 +12,9 @@ public class HistoryGame
     public readonly GameStatus GameStatus;
     public readonly int Rating;
     public readonly int CurrentRating;
-    public readonly int WinStreakCount;
 
-    public HistoryGame(GameType gameType, int id, string opponent, GameStatus gameStatus, int rating, int currentRating,
-        int winStreakCount)
+
+    public HistoryGame(GameType gameType, int id, string opponent, GameStatus gameStatus, int rating, int currentRating)
     {
         GameType = gameType;
         Id = id;
@@ -23,12 +22,11 @@ public class HistoryGame
         GameStatus = gameStatus;
         Rating = rating;
         CurrentRating = currentRating;
-        WinStreakCount = winStreakCount;
+
     }
 
     public override string ToString()
     {
-        return $"{GameType}:\topponent='{Opponent}', gameId={Id}, gameRating={Rating}, " +
-               $"result={GameStatus}, rating={CurrentRating}, winStreak={WinStreakCount}";
+        return $"{GameType,-10} {Opponent,15} {Id,10} {Rating,15} {GameStatus,10} {CurrentRating,10}";
     }
 }

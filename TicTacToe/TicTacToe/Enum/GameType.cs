@@ -2,7 +2,7 @@ namespace TicTacToe.Enum;
 
 public enum GameType
 {
-    SingleGame,
-    TrainingGame,
-    StandartGame
+    Single,
+    Training,
+    Standart
 }

@@ -59,7 +59,7 @@ public class GameField
                               GameStatus.Draw => GameStatus.Draw,
                               GameStatus.Win => $"{(char)GameSide.X}  {_game.Player.UserName} {GameStatus.Win}",
                               _ => $"{(char)GameSide.O}  " +
-                                   $"{(_game.Type != GameType.SingleGame ? _game.Opponent.UserName : "Bot")} " +
+                                   $"{(_game.Type != GameType.Single ? _game.Opponent.UserName : "Bot")} " +
                                    $"{GameStatus.Win}"
                           });
         return status;
@@ -67,7 +67,7 @@ public class GameField
 
     private int GetIndex()
     {
-        return _game.Type != GameType.SingleGame ? GetIndexFromUser()
+        return _game.Type != GameType.Single ? GetIndexFromUser()
             : NumberSteps % 2 == 0 ? GetIndexFromUser()
             : Bot.GetIndexFromBot(this);
     }

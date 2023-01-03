@@ -26,10 +26,10 @@ public static class GameMenu
             {
                 case "1":
                     label:
-                    Console.Write($"\nWhich game do yo want to create: \n" +
-                                  $"1. StandartGame\n" +
-                                  $"2. TrainGame\n" +
-                                  $"3. SingleGame\n" +
+                    Console.Write($"\nWhich game do you want to create: \n" +
+                                  $"1. Standart\n" +
+                                  $"2. Training\n" +
+                                  $"3. Single\n" +
                                   $"Your choice: ");
 
                     var typeGame = Console.ReadLine();

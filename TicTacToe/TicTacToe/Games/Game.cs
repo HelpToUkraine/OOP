@@ -104,7 +104,7 @@ public abstract class Game
 
     private protected GameStatus IsWinPlayer()
     {
-        Console.Write($"\n{Type}: {Player.UserName} vs {(Type == GameType.SingleGame ? "Bot" : Opponent.UserName)}");
+        Console.Write($"\n{Type}: {Player.UserName} vs {(Type == GameType.Single ? "Bot" : Opponent.UserName)}");
         return new GameField(this).StartGame();
     }
 

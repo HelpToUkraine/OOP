@@ -7,11 +7,11 @@ namespace TicTacToe.Games;
 public class SingleGame : Game
 {
     [JsonConstructor]
-    public SingleGame(GameAccount player) : base(player, GameType.SingleGame)
+    public SingleGame(GameAccount player) : base(player, GameType.Single)
     {
     }
 
-    public SingleGame(GameAccount player, int rating) : base(player, rating, GameType.SingleGame)
+    public SingleGame(GameAccount player, int rating) : base(player, rating, GameType.Single)
     {
     }
 
