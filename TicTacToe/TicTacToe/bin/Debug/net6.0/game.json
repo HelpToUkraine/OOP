@@ -14,8 +14,7 @@
           "Opponent": "Kirgo",
           "GameStatus": 0,
           "Rating": 5,
-          "CurrentRating": 25,
-          "WinStreakCount": 1
+          "CurrentRating": 25
         },
         {
           "GameType": 2,
@@ -23,8 +22,7 @@
           "Opponent": "Kirgo",
           "GameStatus": 0,
           "Rating": 10,
-          "CurrentRating": 35,
-          "WinStreakCount": 2
+          "CurrentRating": 35
         }
       ],
       "_currentRating": 35,
@@ -41,8 +39,7 @@
           "Opponent": "Scam",
           "GameStatus": 1,
           "Rating": 5,
-          "CurrentRating": 15,
-          "WinStreakCount": 0
+          "CurrentRating": 15
         },
         {
           "GameType": 2,
@@ -50,8 +47,7 @@
           "Opponent": "Scam",
           "GameStatus": 1,
           "Rating": 5,
-          "CurrentRating": 10,
-          "WinStreakCount": 0
+          "CurrentRating": 10
         }
       ],
       "_currentRating": 10,
@@ -74,8 +70,7 @@
           "Opponent": "Kirgo",
           "GameStatus": 0,
           "Rating": 5,
-          "CurrentRating": 25,
-          "WinStreakCount": 1
+          "CurrentRating": 25
         },
         {
           "GameType": 2,
@@ -83,8 +78,7 @@
           "Opponent": "Kirgo",
           "GameStatus": 0,
           "Rating": 10,
-          "CurrentRating": 35,
-          "WinStreakCount": 2
+          "CurrentRating": 35
         }
       ],
       "_currentRating": 35,
@@ -101,8 +95,7 @@
           "Opponent": "Scam",
           "GameStatus": 1,
           "Rating": 5,
-          "CurrentRating": 15,
-          "WinStreakCount": 0
+          "CurrentRating": 15
         },
         {
           "GameType": 2,
@@ -110,8 +103,7 @@
           "Opponent": "Scam",
           "GameStatus": 1,
           "Rating": 5,
-          "CurrentRating": 10,
-          "WinStreakCount": 0
+          "CurrentRating": 10
         }
       ],
       "_currentRating": 10,
@@ -134,8 +126,7 @@
           "Opponent": "BOT",
           "GameStatus": 0,
           "Rating": 7,
-          "CurrentRating": 27,
-          "WinStreakCount": 1
+          "CurrentRating": 27
         }
       ],
       "_currentRating": 27,

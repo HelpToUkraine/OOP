@@ -86,14 +86,13 @@ public abstract class GameAccount
         Console.WriteLine($"\nHistory games for:");
         Console.WriteLine("{0, -10} {1, -10} {2, 15} {3, 10} {4, 15} {5, 10} {6, 10}", "Name", "Type", "Opponent",
             "GameId", "GameRating", "Result", "Rating");
+        Console.ResetColor();
         foreach (var account in UserService.Get())
         {
             foreach (var game in account.HistoryGames)
             {
                 Console.WriteLine("{0, -10} {1}", account.UserName, game);
             }
-
-            Console.WriteLine();
         }
     }
 
@@ -106,6 +105,7 @@ public abstract class GameAccount
     {
         Console.WriteLine("\nStatistics players:");
         Console.WriteLine("{0, -10} {1, 10} {2, 10} {3, 10}", "Name", "Type", "Rating", "Games");
+        Console.ResetColor();
         UserService.Get().ForEach(Console.WriteLine);
     }
 

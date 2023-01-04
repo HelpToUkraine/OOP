@@ -10,6 +10,7 @@ public static class GameMenu
     {
         while (true)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($"\nChoose what you want to do: \n" +
                           $"1. Create new game \n" +
                           $"2. Get all games info \n" +
@@ -17,7 +18,6 @@ public static class GameMenu
                           $"4. Get all names \n" +
                           $"5. Get max rating \n" +
                           $"6. Get all game ids \n" +
-                          $"7. Create account \n" +
                           $"Other. Exit \n" +
                           $"Your choice: ");
             var input = Console.ReadLine();
@@ -118,12 +118,17 @@ public static class GameMenu
                     GameAccount.GetAccountsInfo();
                     break;
                 case "4":
-                    Console.WriteLine("\nName accounts: " + string.Join(", ", UserService.GetNames()));
+                    Console.WriteLine("\nName accounts:");
+                    Console.ResetColor();
+                    Console.WriteLine(string.Join(",\n", UserService.GetNames()));
                     break;
                 case "5":
                     try
                     {
-                        Console.WriteLine("\nMax rating from all users: " + UserService.GetMaxRating());
+                        Console.Write("\nMax rating from all users: ");
+                        Console.ResetColor();
+                        Console.WriteLine(UserService.GetMaxRating());
+
                     }
                     catch (Exception)
                     {
@@ -132,7 +137,9 @@ public static class GameMenu
 
                     break;
                 case "6":
-                    Console.WriteLine("\nIDs: " + string.Join(", ", GameService.GetIDs()));
+                    Console.WriteLine("\nGame IDs: ");
+                    Console.ResetColor();
+                    Console.WriteLine(string.Join(", ", GameService.GetIDs()));
                     break;
 
                 default:
